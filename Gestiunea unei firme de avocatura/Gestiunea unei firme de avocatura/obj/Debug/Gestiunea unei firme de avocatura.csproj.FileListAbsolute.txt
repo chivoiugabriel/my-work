@@ -1,0 +1,21 @@
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\bin\Debug\Data de baze .mdf
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\bin\Debug\Data de baze _log.ldf
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\bin\Debug\Gestiunea unei firme de avocatura.exe.config
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\bin\Debug\Gestiunea unei firme de avocatura.exe
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\bin\Debug\Gestiunea unei firme de avocatura.pdb
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\obj\Debug\Gestiunea unei firme de avocatura.csprojAssemblyReference.cache
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\obj\Debug\Gestiunea_unei_firme_de_avocatura.AdaugareAvocat.resources
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\obj\Debug\Gestiunea_unei_firme_de_avocatura.MainForm.resources
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\obj\Debug\Gestiunea_unei_firme_de_avocatura.Properties.Resources.resources
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\obj\Debug\Gestiunea unei firme de avocatura.csproj.GenerateResource.cache
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\obj\Debug\Gestiunea unei firme de avocatura.csproj.CoreCompileInputs.cache
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\obj\Debug\Gestiunea unei firme de avocatura.exe
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\obj\Debug\Gestiunea unei firme de avocatura.pdb
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\obj\Debug\Gestiunea_unei_firme_de_avocatura.AdaugareClient.resources
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\obj\Debug\Gestiunea_unei_firme_de_avocatura.AdaugareProces.resources
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\obj\Debug\Gestiunea_unei_firme_de_avocatura.ModificareAvocat.resources
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\obj\Debug\Gestiunea_unei_firme_de_avocatura.ModificareClient.resources
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\obj\Debug\Gestiunea_unei_firme_de_avocatura.ModificareProces.resources
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\obj\Debug\Gestiunea_unei_firme_de_avocatura.StergereAvocat.resources
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\obj\Debug\Gestiunea_unei_firme_de_avocatura.StergereClient.resources
+C:\Users\Gigabyte\source\repos\Gestiunea unei firme de avocatura\Gestiunea unei firme de avocatura\obj\Debug\Gestiunea_unei_firme_de_avocatura.StergereProces.resources

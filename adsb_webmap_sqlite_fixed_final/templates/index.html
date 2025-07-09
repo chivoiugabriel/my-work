@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ADS-B WebMap - Fixat</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="/static/map.js" defer></script>
+    <style>
+        :root {
+            --bg: #121212;
+            --bg-panel: #1e1e1e;
+            --text: #e0e0e0;
+            --primary: #2d89ef;
+            --border: #333;
+
+            --primary: #2d89ef;
+            --bg: #f4f6f8;
+            --text: #333;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg); color: var(--text);
+            color: var(--text);
+        }
+        h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+        #container {
+            display: flex;
+            height: 100vh;
+        }
+        #map {
+            flex: 2;
+        }
+        #table-container {
+            background-color: var(--bg-panel);
+            flex: 1;
+            padding: 16px;
+            background-color: var(--bg-panel);
+            box-shadow: -1px 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        #filters {
+            margin-bottom: 12px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        input[type="text"], select {
+            padding: 6px;
+            font-size: 14px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+        button {
+            padding: 6px 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #1e5fad;
+        }
+        table {
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 0 6px rgba(0,0,0,0.1);
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        th {
+            background-color: #2a2a2a;
+            font-weight: bold;
+        }
+        th, td {
+            transition: background-color 0.2s;
+            padding: 8px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+        #legend {
+            margin-top: auto;
+            font-size: 13px;
+            border-radius: 4px;
+        }
+
+        body { margin: 0; font-family: sans-serif; }
+        #container { display: flex; height: 100vh; }
+        #map { flex: 2; }
+        #table-container {
+            background-color: var(--bg-panel);
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        table {
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 0 6px rgba(0,0,0,0.1); width: 100%; border-collapse: collapse; }
+        th, td {
+            transition: background-color 0.2s; border: 1px solid var(--border); padding: 6px; text-align: center; }
+        th { background-color: #eee; }
+        #filters { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="map"></div>
+        <div id="table-container">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <h3 style="margin:0;"><i class="fas fa-plane-departure"></i> Aeronave detectate</h3>
+            <label style="font-size:13px;">
+                🌙 / ☀️ 
+                <input type="checkbox" id="theme-toggle" style="vertical-align: middle;">
+            </label>
+        </div>
+            <h3>Aeronave detectate</h3>
+            <div id="filters">
+                <i class='fas fa-search'></i> <input type="text" id="search-icao" placeholder="Caută după ICAO..." />
+                <label for="sort-alt"><i class='fas fa-sort-amount-up'></i> Sortează după altitudine:</label>
+                <select id="sort-alt">
+                    <option value="none">Fără sortare</option>
+                    <option value="asc">Crescător</option>
+                    <option value="desc">Descrescător</option>
+                </select>
+                <button onclick="applyFilters()">Aplică</button>
+            </div>
+            <table id="plane-table">
+                <thead>
+                    <tr>
+                        <th>ICAO</th>
+                        <th>Lat</th>
+                        <th>Lon</th>
+                        <th>Alt (ft)</th>
+                        <th>Spd (kt)</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            <style>
+                #plane-table tbody tr:hover {
+                    background-color: rgba(255, 255, 255, 0.05);
+                }
+                #plane-table tbody tr:nth-child(even) {
+                    background-color: rgba(255, 255, 255, 0.03);
+                }
+            </style>
+            </table>
+            <div id="legend" style="margin-top: 20px; padding: 8px; background: white; border: 1px solid var(--border); font-size: 14px;">
+              <strong>Legendă altitudine:</strong><br>
+              <div><span style="color: green;">&#9632;</span> sub 5.000 ft</div>
+              <div><span style="color: orange;">&#9632;</span> 5.000 - 15.000 ft</div>
+              <div><span style="color: red;">&#9632;</span> peste 15.000 ft</div>
+            </div>
+        </div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('change', function () {
+        if (toggle.checked) {
+            document.documentElement.style.setProperty('--bg', '#f4f6f8');
+            document.documentElement.style.setProperty('--bg-panel', '#ffffff');
+            document.documentElement.style.setProperty('--text', '#333');
+            document.documentElement.style.setProperty('--border', '#ccc');
+        } else {
+            document.documentElement.style.setProperty('--bg', '#121212');
+            document.documentElement.style.setProperty('--bg-panel', '#1e1e1e');
+            document.documentElement.style.setProperty('--text', '#e0e0e0');
+            document.documentElement.style.setProperty('--border', '#333');
+        }
+    });
+});
+</script>
+</body>
+</html>
+

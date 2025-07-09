@@ -1,3 +1,7 @@
+Proiectul de licenta a constat  in dezvoltarea unui sistem de procesare și vizualizare în timp real a datelor ADS-B pentru monitorizarea zborurilor
+
+
+
 # fibonaci
 https://youtu.be/TbAoq7PAWK0
 
